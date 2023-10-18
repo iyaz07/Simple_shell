@@ -23,6 +23,7 @@ char **tokens(char *buffer)
 	}
 	if (i == 0)
 		freemem(av);
+
 	av[i] = NULL;
 	return (av);
 }
