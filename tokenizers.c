@@ -22,13 +22,14 @@ char **tokens(char *buffer)
 		token = strtok(NULL, " \n\t");
 	}
 
+	av[i] = NULL;
+
 	if (i == 0)
 	{
 	freemem(av);
 	return (NULL);
 	}
 
-	av[i] = NULL;
 	return (av);
 }
 
