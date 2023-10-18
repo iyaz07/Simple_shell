@@ -11,7 +11,7 @@ char **tokens(char *buffer)
 	char *token;
 	char **av;
 
-	av = (char **)calloc(20, sizeof(char *));
+	av = (char **)malloc(sizeof(char *) * 20);
 	token = strtok(buffer, " \n\t");
 
 	while (token != NULL)
@@ -22,7 +22,7 @@ char **tokens(char *buffer)
 		token = strtok(NULL, " \n\t");
 	}
 	if (i == 0)
-		free(av);
+		freemem(av);
 	av[i] = NULL;
 	return (av);
 }
@@ -40,10 +40,11 @@ char **path_tokens()
 	char *path = _getenv("PATH");
 	char *path_copy = _strdup(path);
 
-	av = (char **)calloc(20, sizeof(char *));
+	av = (char **)malloc(sizeof(char *) *  20);
 
 	if (av == NULL)
 	{
+		free(path_copy);
 		perror("Error allocating memory");
 		exit(EXIT_FAILURE);
 	}
@@ -51,13 +52,11 @@ char **path_tokens()
 	token = strtok(path_copy, ":");
 	while (token != NULL)
 	{
-		av[i] = (char *)malloc(sizeof(char) * (_strlen(token) + 1));
 		av[i] = _strdup(token);
 		token = strtok(NULL, ":");
 		i++;
 	}
 	av[i] = NULL;
 	free(path_copy);
-
 	return (av);
 }

@@ -8,7 +8,7 @@ void freemem(char **av)
 {
 	int i = 0;
 
-	for (i = 0; av[i] != NULL; i++)
+	for (i = 0; i < 20; i++)
 		free(av[i]);
 	free(av);
 }
@@ -29,4 +29,5 @@ void _memcpy(void *newptr, const void *ptr, unsigned int size)
 
 	for (i = 0; i < size; i++)
 		char_newptr[i] = char_ptr[i];
+	char_newptr[i] = '\0';
 }

@@ -49,6 +49,7 @@ char *checkpath(char **path, char **av)
 
 	if (access(av[0], F_OK) == 0)
 	{
+		freemem(path);
 		return (av[0]);
 	}
 	while (path[i]  != NULL)
