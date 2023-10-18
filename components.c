@@ -32,10 +32,10 @@ void shell_loop(void)
 			continue;
 		}
 		process_input(buffer);
-		free(buffer);
 
 		if (interactive == 0)
 			{
+			free(buffer);
 			break;
 			}
 	}
@@ -53,7 +53,7 @@ void process_input(char *buffer)
 	char **av = tokens(buffer);
 	char **path;
 	char *argument;
-	
+
 	if (av != NULL)
 	{
 		if (_strcmp(av[0], "env") == 0)
