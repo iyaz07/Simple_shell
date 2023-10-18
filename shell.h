@@ -26,4 +26,5 @@ void process_input(char *buffer);
 void shell_loop(void);
 char *_strcat(char *dest, const char *src);
 char *_strstr(const char *haystack, const char *needle);
+void pathing_error(char **av);
 #endif

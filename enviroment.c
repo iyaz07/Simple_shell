@@ -74,7 +74,28 @@ char *checkpath(char **path, char **av)
 		free(s);
 		i++;
 	}
-	perror("./hsh");
+	pathing_error(av);
 	freemem(path);
 	return (NULL);
+}
+
+/**
+ * pathing_error - Prints an error message based on the isatty of the input
+ * @av: An array of strings representing the command and its arguments.
+ * Return: Nothing since it's a function that types an error.
+ */
+
+void pathing_error(char **av)
+{
+int interactive = isatty(STDIN_FILENO);
+
+if (interactive == 0)
+{
+	fprintf(stderr, "./hsh: %s: No such file or directory\n", av[0]);
+}
+else
+{
+	fprintf(stderr, "%s: command not found\n", av[0]);
+}
+
 }
