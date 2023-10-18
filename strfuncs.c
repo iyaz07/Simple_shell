@@ -49,7 +49,7 @@ char *_strcpy(char *dest, char *src)
 {
 	int len = 0;
 	int i = 0;
-	
+
 	len = _strlen(src);
 
 	for (i = 0; i < len; i++)
