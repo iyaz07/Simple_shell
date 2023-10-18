@@ -6,11 +6,6 @@
  */
 int main(void)
 {
-
-	while (1)
-	{
-		shell_loop();
-	}
-
+	shell_loop();
 	return (0);
 }

@@ -32,9 +32,12 @@ void shell_loop(void)
 			continue;
 		}
 		process_input(buffer);
+		free(buffer);
 
 		if (interactive == 0)
+			{
 			break;
+			}
 	}
 }
 /**
