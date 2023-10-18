@@ -32,7 +32,6 @@ void shell_loop(void)
 			continue;
 		}
 		process_input(buffer);
-		free(buffer);
 
 		if (interactive == 0)
 			break;
@@ -52,10 +51,13 @@ void process_input(char *buffer)
 	char **path;
 	char *argument;
 
+	free(buffer);
+
 	if (av != NULL)
 	{
 		if (_strcmp(av[0], "env") == 0)
 		{
+			freemem(av);
 			_printenv();
 		}
 		else if (_strcmp(av[0], "exit") == 0)
@@ -65,13 +67,13 @@ void process_input(char *buffer)
 		}
 		else
 		{
-		path = path_tokens();
-		argument = checkpath(path, av);
+			path = path_tokens();
+			argument = checkpath(path, av);
 
-		if (argument != NULL)
-		{
+			if (argument != NULL)
+			{
 			execute_command(argument, av);
-		}
+			}
 		}
 	}
 }

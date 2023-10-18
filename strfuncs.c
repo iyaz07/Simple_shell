@@ -7,7 +7,7 @@
  */
 int _strlen(const char *str)
 {
-	int i;
+	int i = 0;
 
 	for (i = 0; str[i] != '\0'; i++)
 		;
@@ -22,7 +22,7 @@ int _strlen(const char *str)
  */
 int _strcmp(char *str1, char *str2)
 {
-	int i = 0, j;
+	int i = 0, j = 0;
 
 	while ((str1[i] != '\0') && (str2[i] != '\0') && (str1[i] == str2[i]))
 		i++;
@@ -46,15 +46,10 @@ int _strcmp(char *str1, char *str2)
  */
 char *_strcpy(char *dest, char *src)
 {
-	int len, i;
-
-	len = 0;
-
-	while (src[len] != '\0')
-	{
-		len++;
-	}
-	len++;
+	int len = 0;
+	int i = 0;
+	
+	len = _strlen(src);
 
 	for (i = 0; i < len; i++)
 	{

@@ -9,8 +9,8 @@
  */
 char *_strdup(const char *str)
 {
-	char *newstr;
-	size_t len;
+	char *newstr = NULL;
+	size_t len = 0;
 
 	len = _strlen(str);
 	newstr = malloc(sizeof(char) * (len + 1));
@@ -31,8 +31,8 @@ char *_strdup(const char *str)
  */
 char *_strcat(char *dest, const char *src)
 {
-	int i;
-	int j;
+	int i = 0;
+	int j = 0;
 
 	for (i = 0; dest[i] != '\0'; i++)
 		;

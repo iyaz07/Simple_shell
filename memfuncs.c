@@ -8,8 +8,9 @@ void freemem(char **av)
 {
 	int i = 0;
 
-	for (i = 0; i < 20; i++)
+	for (i = 0; av[i] != NULL; i++)
 		free(av[i]);
+
 	free(av);
 }
 

@@ -16,7 +16,7 @@ void execute_command(char *argument, char **av)
 	if (child_pid == -1)
 	{
 		perror("Error: ");
-		free(av);
+		freemem(av);
 		exit(1);
 	}
 
