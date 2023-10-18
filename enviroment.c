@@ -46,28 +46,29 @@ void _printenv(void)
 char *checkpath(char **path, char **av)
 {
 	int i = 0;
+	char *s;
 
 	if (access(av[0], F_OK) == 0)
 	{
+		s = malloc(_strlen(av[0]) + 1);
+		_strcpy(s, av[0]);
 		freemem(path);
-		return (av[0]);
+		return (s);
 	}
 	while (path[i]  != NULL)
-
 	{
-		char *s = malloc(_strlen(path[i] + _strlen(av[0]) + 2));
-
+		s = malloc(_strlen(path[i]) + _strlen(av[0]) + 2);
 		if (s == NULL)
 		{
 			perror("./hsh");
 			exit(EXIT_FAILURE);
 		}
-		_strcpy(s, path[i]);  /*copythe path*/
+		_strcpy(s, path[i]);  /*copy the path*/
 		_strcat(s, "/");
 		_strcat(s, av[0]);
 		if (access(s, F_OK) == 0)
 		{
-			free(path[i]);
+			freemem(path);
 			return (s);
 		}
 		free(s);

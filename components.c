@@ -42,10 +42,8 @@ void shell_loop(void)
 }
 /**
  * process_input - Processes user input in the shell.
- *
  * This function processes the user input by tokenizing it, determining the
  * command to execute, and taking appropriate actions based on the command.
- *
  * @buffer: The input string from the user.
  */
 void process_input(char *buffer)
@@ -71,12 +69,12 @@ void process_input(char *buffer)
 		{
 			path = path_tokens();
 			argument = checkpath(path, av);
-
 			if (argument != NULL)
 			{
 			execute_command(argument, av);
 			freemem(av);
 			}
+			free(argument);
 		}
 	}
 }
