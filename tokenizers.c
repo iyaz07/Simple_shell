@@ -8,8 +8,8 @@
 char **tokens(char *buffer)
 {
 	int i = 0;
-	char *token;
-	char **av;
+	char *token = NULL;
+	char **av = NULL;
 
 	av = (char **)malloc(sizeof(char *) * 20);
 	token = strtok(buffer, " \n\t");
@@ -21,8 +21,12 @@ char **tokens(char *buffer)
 		i++;
 		token = strtok(NULL, " \n\t");
 	}
+
 	if (i == 0)
-		freemem(av);
+	{
+	freemem(av);
+	return(NULL);
+	}
 
 	av[i] = NULL;
 	return (av);

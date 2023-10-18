@@ -18,7 +18,7 @@ char *_strdup(const char *str)
 	if (newstr == NULL)
 		return (NULL);
 
-	_memcpy(newstr, str, len + 1);
+	_memcpy(newstr, str, len);
 	return (newstr);
 }
 /**

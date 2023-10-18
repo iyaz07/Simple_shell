@@ -50,9 +50,7 @@ void process_input(char *buffer)
 	char **av = tokens(buffer);
 	char **path;
 	char *argument;
-
-	free(buffer);
-
+	
 	if (av != NULL)
 	{
 		if (_strcmp(av[0], "env") == 0)
@@ -62,6 +60,7 @@ void process_input(char *buffer)
 		}
 		else if (_strcmp(av[0], "exit") == 0)
 		{
+			free(buffer);
 			freemem(av);
 			exit(0);
 		}
