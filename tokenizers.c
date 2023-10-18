@@ -16,7 +16,7 @@ char **tokens(char *buffer)
 
 	while (token != NULL)
 	{
-		av[i] = (char *)malloc(sizeof(char) * (_strlen(token) + 1));
+		av[i] = (char *)malloc(sizeof(char) * _strlen(token));
 		_strcpy(av[i], token);
 		i++;
 		token = strtok(NULL, " \n\t");
