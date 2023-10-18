@@ -19,6 +19,7 @@ void shell_loop(void)
 			write(1, "$ ", 2);
 		if (getline(&buffer, &char_read, stdin) == -1)
 		{
+			free(buffer);
 			break;
 			perror("./hsh");
 			exit(1);
