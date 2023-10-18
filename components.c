@@ -24,7 +24,7 @@ void shell_loop(void)
 			perror("./hsh");
 			exit(1);
 		}
-		fflush(stdin);
+
 		len = strlen(buffer);
 		if (len > 0 && buffer[len - 1] == '\n')
 			buffer[len - 1] = '\0';
