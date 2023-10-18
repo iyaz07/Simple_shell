@@ -17,7 +17,6 @@ void shell_loop(void)
 
 		if (interactive != 0)
 			write(1, "$ ", 2);
-		fflush(stdin);
 		if (getline(&buffer, &char_read, stdin) == -1)
 		{
 			free(buffer);
@@ -25,6 +24,7 @@ void shell_loop(void)
 			perror("./hsh");
 			exit(1);
 		}
+		fflush(stdin);
 		len = strlen(buffer);
 		if (len > 0 && buffer[len - 1] == '\n')
 			buffer[len - 1] = '\0';
