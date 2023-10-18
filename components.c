@@ -72,6 +72,7 @@ void process_input(char *buffer)
 			if (argument != NULL)
 			{
 			execute_command(argument, av);
+			freemem(av);
 			}
 		}
 	}
