@@ -1,0 +1,65 @@
+#include "shell.h"
+/**
+ * _strlen - Calculate the length of a string.
+ *
+ * @str: The input string.
+ * Return: The length of the input string.
+ */
+int _strlen(const char *str)
+{
+	int i;
+
+	for (i = 0; str[i] != '\0'; i++)
+		;
+	return (i);
+}
+/**
+ * _strcmp - Compare two strings.
+ *
+ * @str1: The first input string.
+ * @str2: The second input string.
+ * Return: 0 if the strings are equal, a positive or negative value otherwise.
+ */
+int _strcmp(char *str1, char *str2)
+{
+	int i = 0, j;
+
+	while ((str1[i] != '\0') && (str2[i] != '\0') && (str1[i] == str2[i]))
+		i++;
+
+	if (str1[i] == str2[i])
+		return (0);
+
+	else
+	{
+		j = str1[i] - str2[i];
+		return (j);
+	}
+}
+
+/**
+ * _strcpy - Copy a string.
+ *
+ * @dest: The destination string to copy to.
+ * @src: The source string to copy from.
+ * Return: The destination string after copying.
+ */
+char *_strcpy(char *dest, char *src)
+{
+	int len, i;
+
+	len = 0;
+
+	while (src[len] != '\0')
+	{
+		len++;
+	}
+	len++;
+
+	for (i = 0; i < len; i++)
+	{
+		dest[i] = src[i];
+	}
+
+	return (dest);
+}
