@@ -1,6 +1,6 @@
 #include "shell.h"
-/** 
- *  _realloc - A func to reallocate block of memeory 
+/**
+ *  _realloc - A func to reallocate block of memeory
  *  @ptr: Pointer to the block of memory
  *  @old_size: The size of ptr
  *  @new_size: The size we want to reallocate ptr to
@@ -10,7 +10,7 @@ void *_realloc(void *ptr, size_t old_size, size_t new_size)
 {
 	char *buffer;
 
-	if(ptr == NULL)
+	if (ptr == NULL)
 	{
 		ptr = malloc(new_size);
 		return (ptr);

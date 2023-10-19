@@ -35,6 +35,7 @@ char *_strcat(char *dest, const char *src)
 {
 	int i = 0;
 	int j = 0;
+
 	i = _strlen(dest);
 
 	for (j = 0; src[j] != '\0'; j++)
@@ -74,33 +75,6 @@ char *_strstr(const char *haystack, const char *needle)
 	}
 	return (NULL);
 }
-/**
- * _fgetc - Read a character from a file descriptor.
- *
- * @file_descriptor: The file descriptor to read from.
- *
- * Return: On success, returns the next character read as an integer. If the end
- * of the file is reached, it returns EOF. On error, it returns EOF and sets the
- * appropriate error code.
- */
-int _fgetc(int file_descriptor)
-{
-	char c;
-	int bytes_read;
-
-	file_descriptor = 0;
-	bytes_read = read(file_descriptor, &c, 1);
-
-	if (bytes_read == 1)
-	{
-		return (int)c;
-	}
-	else
-	{
-		return EOF;
-	}
-}
-
 /**
  * _strncpy - Copies at most an inputted number
  * of bytes from string src into dest.

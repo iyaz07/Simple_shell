@@ -9,6 +9,8 @@
 #include <sys/wait.h>
 #include <fcntl.h>
 #include <unistd.h>
+#define INITIAL_BUFFER_SIZE 256
+#define REALLOCATION_FACTOR 2
 char **path_tokens();
 char *checkpath(char **path, char **av);
 char *_getenv(const char *variable_name);
@@ -31,6 +33,9 @@ void pathing_error(char **av);
 ssize_t _getline(char **lineptr, size_t *n, int file_descriptor);
 char *_strchr(char *str, int c);
 int _fgetc(int file_descriptor);
+char *realloc_buffer(char *buffer, size_t *n);
 void *_realloc(void *ptr, size_t old_size, size_t new_size);
 char *_strtok(char *str, const char *delim);
+void _skip_delimiters(char **string, const char *delim);
+char *_extract_token(char **string, const char *delim);
 #endif

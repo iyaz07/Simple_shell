@@ -3,13 +3,13 @@
  * _getline - Reads a line from a stream
  * @lineptr: Pointer to the buffer storing the line
  * @n: Pointer to the size of the buffer
- * @stream: Pointer to the input stream
+ * @file_descriptor: Pointer to the input stream
  *
  * Return: The number of characters read, or -1 on failure
  */
 ssize_t _getline(char **lineptr, size_t *n, int file_descriptor)
 {
-	char *buffer;
+	char *buffer = *lineptr;
 	size_t i = 0;
 	int c;
 
@@ -18,27 +18,23 @@ ssize_t _getline(char **lineptr, size_t *n, int file_descriptor)
 	if (*lineptr == NULL || *n == 0)
 	{
 		*n = 256;
-		*lineptr = malloc(*n);
+		*lineptr = (char *)malloc(*n);
 		if (*lineptr == NULL)
-			return -1;
+			return (-1);
 	}
-
 	buffer = *lineptr;
 
 	while ((c = (char)_fgetc(file_descriptor)) != EOF)
 	{
 		if (i >= *n - 1)
 		{
-			*n *= 2;
-			*lineptr = _realloc(*lineptr, *n, *n * 2);
-			if (*lineptr == NULL)
-			{
-				free(buffer);
-				return -1;
-			}
-			buffer = *lineptr;
-		}
+			buffer = realloc_buffer(buffer, n);
 
+			if (buffer == NULL)
+				return (-1);
+			*lineptr = buffer;
+
+		}
 		buffer[i] = (char) c;
 		i++;
 
@@ -49,7 +45,27 @@ ssize_t _getline(char **lineptr, size_t *n, int file_descriptor)
 	buffer[i] = '\0';
 
 	if (i == 0 && c == EOF)
-		return -1;
+		return (-1);
 
-	return i;
+	return (i);
+}
+/**
+ * realloc_buffer - Reallocate memory for a buffer.
+ *
+ * @buffer: A pointer to the buffer to be reallocated.
+ * @n: A pointer to the size of the buffer.
+ *
+ * Return: A pointer to the reallocated buffer or NULL on failure.
+ */
+char *realloc_buffer(char *buffer, size_t *n)
+{
+	char *new_buffer;
+
+	*n *= REALLOCATION_FACTOR;
+	new_buffer = _realloc(buffer, *n, *n);
+
+	if (new_buffer == NULL)
+		free(buffer);
+
+	return (new_buffer);
 }

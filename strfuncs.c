@@ -80,5 +80,5 @@ char *_strchr(char *str, int c)
 	}
 	if (c == *str)
 		return (str);
-	return(NULL);
+	return (NULL);
 }
