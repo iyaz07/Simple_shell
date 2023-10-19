@@ -13,12 +13,13 @@ char *_strdup(const char *str)
 	size_t len = 0;
 
 	len = _strlen(str);
+
 	newstr = malloc(sizeof(char) * (len + 1));
 
 	if (newstr == NULL)
 		return (NULL);
-
 	_memcpy(newstr, str, len);
+
 	return (newstr);
 }
 /**
@@ -34,15 +35,14 @@ char *_strcat(char *dest, const char *src)
 {
 	int i = 0;
 	int j = 0;
-
 	i = _strlen(dest);
-		;
+
 	for (j = 0; src[j] != '\0'; j++)
 	{
 		dest[i + j] = src[j];
 	}
-
 	dest[i + j] = '\0';
+
 	return (dest);
 }
 /**
@@ -69,7 +69,59 @@ char *_strstr(const char *haystack, const char *needle)
 		}
 		if (*n == '\0')
 			return ((char *) haystack);
+
 		haystack++;
 	}
 	return (NULL);
+}
+/**
+ * _fgetc - Read a character from a file descriptor.
+ *
+ * @file_descriptor: The file descriptor to read from.
+ *
+ * Return: On success, returns the next character read as an integer. If the end
+ * of the file is reached, it returns EOF. On error, it returns EOF and sets the
+ * appropriate error code.
+ */
+int _fgetc(int file_descriptor)
+{
+	char c;
+	int bytes_read;
+
+	file_descriptor = 0;
+	bytes_read = read(file_descriptor, &c, 1);
+
+	if (bytes_read == 1)
+	{
+		return (int)c;
+	}
+	else
+	{
+		return EOF;
+	}
+}
+
+/**
+ * _strncpy - Copies at most an inputted number
+ * of bytes from string src into dest.
+ * @dest: The buffer storing the string copy.
+ * @src: The source string.
+ * @n: The maximum number of bytes to copied from src.
+ * Return: A pointer to the resulting string dest.
+ */
+char *_strncpy(char *dest, char *src, int n)
+{
+	int index = 0, src_len = 0;
+
+	while (src[index++])
+		src_len++;
+
+	for (index = 0; src[index] && index < n; index++)
+		dest[index] = src[index];
+
+	for (index = src_len; index < n; index++)
+		dest[index] = '\0';
+
+	return (dest);
+
 }

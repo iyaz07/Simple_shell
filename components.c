@@ -17,7 +17,7 @@ void shell_loop(void)
 
 		if (interactive != 0)
 			write(1, "$ ", 2);
-		if (getline(&buffer, &char_read, stdin) == -1)
+		if (_getline(&buffer, &char_read, 0) == -1)
 		{
 			free(buffer);
 			break;

@@ -60,3 +60,25 @@ char *_strcpy(char *dest, char *src)
 	dest[i] = '\0';
 	return (dest);
 }
+
+/**
+ *  _strchr - Finds occurence of a char within another string
+ *  @str: The string to check for the character
+ *  @c: The character to be checked for
+ *  Return: Pointer to the first position of C in Str, else NULL;
+ */
+char *_strchr(char *str, int c)
+{
+
+	if (str == NULL)
+		return (NULL);
+	while (*str)
+	{
+		if (c == *str)
+			return (str);
+		str++;
+	}
+	if (c == *str)
+		return (str);
+	return(NULL);
+}
