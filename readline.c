@@ -62,7 +62,7 @@ char *realloc_buffer(char *buffer, size_t *n)
 	char *new_buffer;
 
 	*n *= REALLOCATION_FACTOR;
-	new_buffer = _realloc(buffer, *n, *n);
+	new_buffer = _realloc(buffer, *n, *n * 2);
 
 	if (new_buffer == NULL)
 		free(buffer);

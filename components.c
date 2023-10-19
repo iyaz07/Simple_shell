@@ -19,7 +19,6 @@ void shell_loop(void)
 			write(1, "$ ", 2);
 		if (_getline(&buffer, &char_read, 0) == -1)
 		{
-			free(buffer);
 			perror("./hsh");
 			break;
 		}
@@ -29,21 +28,21 @@ void shell_loop(void)
 			buffer[len - 1] = '\0';
 		if (len == 1 && buffer[0] == '\0')
 		{
-			free(buffer);
 			buffer = NULL;
 			continue;
 		}
-		if (buffer != NULL)
-		{
-			process_input(buffer);
-			free(buffer);
-		}
+		
 		if (interactive == 0)
 		{
-			free(buffer);
-			break;
+		free(buffer);
+		break;
 		}
-	}
+			else 
+			{	
+			process_input(buffer);
+			free(buffer);
+			}
+		}
 }
 /**
  * process_input - Processes user input in the shell.
