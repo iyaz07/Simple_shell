@@ -39,10 +39,10 @@ void shell_loop(void)
 			free(buffer);
 		}
 		if (interactive == 0)
-			{
-				free(buffer);
-				break;
-			}
+		{
+			free(buffer);
+			break;
+		}
 	}
 }
 /**
@@ -75,11 +75,9 @@ void process_input(char *buffer)
 			path = path_tokens();
 			argument = checkpath(path, av);
 			if (argument != NULL)
-			{
-			execute_command(argument, av);
-			}
+				execute_command(argument, av);
 			freemem(av);
-			free(argument);	
+			free(argument);
 		}
 	}
 }
