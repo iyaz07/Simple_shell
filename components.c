@@ -20,9 +20,8 @@ void shell_loop(void)
 		if (_getline(&buffer, &char_read, 0) == -1)
 		{
 			free(buffer);
-			break;
 			perror("./hsh");
-			exit(1);
+			break;
 		}
 
 		len = strlen(buffer);
@@ -30,16 +29,20 @@ void shell_loop(void)
 			buffer[len - 1] = '\0';
 		if (len == 1 && buffer[0] == '\0')
 		{
+			free(buffer);
 			buffer = NULL;
 			continue;
 		}
-		process_input(buffer);
-		free(buffer);
+		if (buffer != NULL)
+		{
+			process_input(buffer);
+			free(buffer);
+		}
 		if (interactive == 0)
-			{
+		{
 			free(buffer);
 			break;
-			}
+		}
 	}
 }
 /**
@@ -72,9 +75,7 @@ void process_input(char *buffer)
 			path = path_tokens();
 			argument = checkpath(path, av);
 			if (argument != NULL)
-			{
-			execute_command(argument, av);
-			}
+				execute_command(argument, av);
 			freemem(av);
 			free(argument);
 		}
