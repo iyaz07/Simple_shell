@@ -32,9 +32,6 @@ char *_extract_token(char **string, const char *delim)
 
 	token = malloc(sizeof(char) * (i + 1));
 
-	if (token == NULL)
-		return (NULL);
-
 	strncpy(token, start, i);
 	token[i] = '\0';
 

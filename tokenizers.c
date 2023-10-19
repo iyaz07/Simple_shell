@@ -61,6 +61,7 @@ char **path_tokens()
 	while (token != NULL)
 	{
 		av[i] = _strdup(token);
+		free(token);
 		token = _strtok(NULL, ":");
 		i++;
 	}
