@@ -32,4 +32,5 @@ ssize_t _getline(char **lineptr, size_t *n, int file_descriptor);
 char *_strchr(char *str, int c);
 int _fgetc(int file_descriptor);
 void *_realloc(void *ptr, size_t old_size, size_t new_size);
+char *_strtok(char *str, const char *delim);
 #endif
