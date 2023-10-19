@@ -30,11 +30,11 @@ void shell_loop(void)
 			buffer[len - 1] = '\0';
 		if (len == 1 && buffer[0] == '\0')
 		{
-			free(buffer);
+			buffer = NULL;
 			continue;
 		}
 		process_input(buffer);
-
+		free(buffer);
 		if (interactive == 0)
 			{
 			free(buffer);
