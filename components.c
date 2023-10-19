@@ -40,8 +40,8 @@ void shell_loop(void)
 		}
 		if (interactive == 0)
 			{
-			free(buffer);
-			break;
+				free(buffer);
+				break;
 			}
 	}
 }
