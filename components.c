@@ -31,14 +31,14 @@ void shell_loop(void)
 			buffer = NULL;
 			continue;
 		}
-		
+
 		if (interactive == 0)
 		{
 		free(buffer);
 		break;
 		}
-			else 
-			{	
+			else
+			{
 			process_input(buffer);
 			free(buffer);
 			}
