@@ -91,7 +91,7 @@ int interactive = isatty(STDIN_FILENO);
 
 if (interactive == 0)
 {
-	fprintf(stderr, "./hsh: 1: %s: No such file or directory\n", av[0]);
+	fprintf(stderr, "./hsh: 1: %s: not found\n", av[0]);
 }
 else
 {
