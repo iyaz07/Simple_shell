@@ -16,7 +16,7 @@ ssize_t _getline(char **lineptr, size_t *n, int file_descriptor)
 	file_descriptor = 0;
 
 	if (*lineptr == NULL || *n == 0)
-		*n = 256;
+		*n = 1024;
 
 	*lineptr = (char *)malloc(*n);
 

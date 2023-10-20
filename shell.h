@@ -9,7 +9,7 @@
 #include <sys/wait.h>
 #include <fcntl.h>
 #include <unistd.h>
-#define INITIAL_BUFFER_SIZE 256
+#define INITIAL_BUFFER_SIZE 1024
 #define REALLOCATION_FACTOR 2
 char **path_tokens();
 char *checkpath(char **path, char **av);
