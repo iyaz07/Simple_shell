@@ -87,16 +87,16 @@ char *checkpath(char **path, char **av)
 
 void pathing_error(char **av)
 {
-int interactive = isatty(STDIN_FILENO);
+	int interactive = isatty(STDIN_FILENO);
 
-if (interactive == 0)
-{
-	fprintf(stderr, "./hsh: 1: %s: not found\n", av[0]);
-}
-else
-{
-	fprintf(stderr, "%s: command not found\n", av[0]);
-}
+	if (interactive == 0)
+	{
+		fprintf(stderr, "./hsh: 1: %s: not found\n", av[0]);
+	}
+	else
+	{
+		fprintf(stderr, "%s: command not found\n", av[0]);
+	}
 	freemem(av);
 	exit(127);
 }
