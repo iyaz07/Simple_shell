@@ -32,7 +32,6 @@ void shell_loop(void)
 			continue;
 		}
 		process_input(buffer);
-		free(buffer);
 
 		if (interactive == 0 && buffer == NULL)
 		{
@@ -53,6 +52,7 @@ void process_input(char *buffer)
 	char **path;
 	char *argument;
 
+	free(buffer);
 	if (av != NULL)
 	{
 		if (_strcmp(av[0], "env") == 0)
@@ -63,7 +63,6 @@ void process_input(char *buffer)
 		else if (_strcmp(av[0], "exit") == 0)
 		{
 			freemem(av);
-			free(buffer);
 			exit(0);
 		}
 		else

@@ -74,8 +74,8 @@ char *checkpath(char **path, char **av)
 		free(s);
 		i++;
 	}
-	pathing_error(av);
 	freemem(path);
+	pathing_error(av);
 	return (NULL);
 }
 
@@ -97,5 +97,6 @@ else
 {
 	fprintf(stderr, "%s: command not found\n", av[0]);
 }
-
+	freemem(av);
+	exit(127);
 }

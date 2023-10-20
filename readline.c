@@ -10,7 +10,7 @@
  */
 ssize_t _getline(char **lineptr, size_t *n, int file_descriptor)
 {
-	static char *buffer;
+	char *buffer;
 	size_t i = 0;
 	int c;
 
