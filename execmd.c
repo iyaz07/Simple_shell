@@ -24,9 +24,7 @@ void execute_command(char *argument, char **av)
 	{
 		if (execve(argument, av, environ) == -1)
 		{
-			perror("./hsh");
-			freemem(av);
-			exit(EXIT_FAILURE);
+			perror("./hsh");	
 		}
 		freemem(av);
 		exit(EXIT_SUCCESS);
