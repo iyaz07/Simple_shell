@@ -38,4 +38,5 @@ void *_realloc(void *ptr, size_t old_size, size_t new_size);
 char *_strtok(char *str, const char *delim);
 void _skip_delimiters(char **string, const char *delim);
 char *_extract_token(char **string, const char *delim);
+ssize_t rl(char **buffer, size_t *buffer_size, int file_descriptor);
 #endif

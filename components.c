@@ -39,7 +39,7 @@ void shell_loop(void)
 			break;
 		}
 
-		}
+	}
 }
 /**
  * process_input - Processes user input in the shell.
