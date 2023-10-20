@@ -16,12 +16,13 @@ ssize_t _getline(char **lineptr, size_t *n, int file_descriptor)
 	file_descriptor = 0;
 
 	if (*lineptr == NULL || *n == 0)
-	{
 		*n = 256;
-		*lineptr = (char *)malloc(*n);
-		if (*lineptr == NULL)
-			return (-1);
-	}
+
+	*lineptr = (char *)malloc(*n);
+
+	if (*lineptr == NULL)
+		return (-1);
+
 	buffer = *lineptr;
 
 	while ((c = (char)_fgetc(file_descriptor)) != EOF)
@@ -31,7 +32,10 @@ ssize_t _getline(char **lineptr, size_t *n, int file_descriptor)
 			buffer = realloc_buffer(buffer, n);
 
 			if (buffer == NULL)
+			{
+				free(*lineptr);
 				return (-1);
+			}
 			*lineptr = buffer;
 
 		}
@@ -45,8 +49,10 @@ ssize_t _getline(char **lineptr, size_t *n, int file_descriptor)
 	buffer[i] = '\0';
 
 	if (i == 0 && c == EOF)
+	{
+		free(*lineptr);
 		return (-1);
-
+	}
 	return (i);
 }
 /**
@@ -62,10 +68,13 @@ char *realloc_buffer(char *buffer, size_t *n)
 	char *new_buffer;
 
 	*n *= REALLOCATION_FACTOR;
-	new_buffer = _realloc(buffer, *n, *n * 2);
+	new_buffer = _realloc(buffer, *n, *n);
 
 	if (new_buffer == NULL)
+	{
 		free(buffer);
+		return (NULL);
+	}
 
 	return (new_buffer);
 }

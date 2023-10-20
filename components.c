@@ -19,7 +19,6 @@ void shell_loop(void)
 			write(1, "$ ", 2);
 		if (_getline(&buffer, &char_read, 0) == -1)
 		{
-			perror("./hsh");
 			break;
 		}
 
@@ -28,15 +27,16 @@ void shell_loop(void)
 			buffer[len - 1] = '\0';
 		if (len == 1 && buffer[0] == '\0')
 		{
+			free(buffer);
 			buffer = NULL;
 			continue;
 		}
 		process_input(buffer);
 		free(buffer);
 
-		if (interactive == 0)
+		if (interactive == 0 && buffer == NULL)
 		{
-		break;
+			break;
 		}
 
 		}
@@ -62,8 +62,8 @@ void process_input(char *buffer)
 		}
 		else if (_strcmp(av[0], "exit") == 0)
 		{
-			free(buffer);
 			freemem(av);
+			free(buffer);
 			exit(0);
 		}
 		else
